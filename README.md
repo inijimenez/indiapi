@@ -57,61 +57,147 @@ It will be valued:
 
 ## Installation
 
-Install my-project with npm
+Clone the repository in your project and run the following command:
 
-```bash
-  npm install my-project
-  cd my-project
+
 ```
+$ git clone https://github.com/inijimenez/indiapi.git
+```
+
     
-## Optimizations
+## Access
 
-What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
+One you have imported this project in your preferred IDE, you can:
 
+Access API: [http://localhost:8089/swagger-ui/#](http://localhost:8089/swagger-ui/#)
 
+API Docs: [http://localhost:8089/v2/api-docs](http://localhost:8089/v2/api-docs)
+
+H2 DataBase: [http://localhost:8089/h2-database](http://localhost:8089/h2-database)
+
+**JDBC driver:** jdbc:h2:mem:indiapi
+
+**usr:** myusr / **psw:** mypsw
 ## Running Tests
 
 To run tests, run the following command
 
 ```bash
-  npm run test
+    mvn test
+ ```
+
+#### TEST 1
+
+http://localhost:8089/api/v1/price/1/35455/2020-06-14T100000
+
+```bash
+{
+  "id": 1,
+  "price_list": 1,
+  "product_id": 35455,
+  "brand": {
+    "id": 1,
+    "name": "ZARA"
+  },
+  "start_date": "2020-06-14T00:00:00",
+  "end_date": "2020-12-31T23:59:59",
+  "priority": 0,
+  "price": 35.5,
+  "curr": "EUR"
+}
+```
+#### TEST 2
+http://localhost:8089/api/v1/price/1/35455/2020-06-14T160000
+```bash
+{
+  "id": 2,
+  "price_list": 2,
+  "product_id": 35455,
+  "brand": {
+    "id": 1,
+    "name": "ZARA"
+  },
+  "start_date": "2020-06-14T15:00:00",
+  "end_date": "2020-06-14T18:30:00",
+  "priority": 1,
+  "price": 25.45,
+  "curr": "EUR"
+}
 ```
 
+#### TEST 3
+http://localhost:8089/api/v1/price/1/35455/2020-06-14T210000
+```bash
+{
+  "id": 1,
+  "price_list": 1,
+  "product_id": 35455,
+  "brand": {
+    "id": 1,
+    "name": "ZARA"
+  },
+  "start_date": "2020-06-14T00:00:00",
+  "end_date": "2020-12-31T23:59:59",
+  "priority": 0,
+  "price": 35.5,
+  "curr": "EUR"
+}
+```
 
-## Usage/Examples
+#### TEST 4
+http://localhost:8089/api/v1/price/1/35455/2020-06-15T100000
+```bash
+{
+  "id": 3,
+  "price_list": 3,
+  "product_id": 35455,
+  "brand": {
+    "id": 1,
+    "name": "ZARA"
+  },
+  "start_date": "2020-06-15T00:00:00",
+  "end_date": "2020-06-15T11:00:00",
+  "priority": 1,
+  "price": 30.5,
+  "curr": "EUR"
+}
+```
 
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
+#### TEST 5
+http://localhost:8089/api/v1/price/1/35455/2020-06-16T210000
+```bash
+{
+  "id": 4,
+  "price_list": 4,
+  "product_id": 35455,
+  "brand": {
+    "id": 1,
+    "name": "ZARA"
+  },
+  "start_date": "2020-06-15T16:00:00",
+  "end_date": "2020-12-31T23:59:59",
+  "priority": 1,
+  "price": 38.95,
+  "curr": "EUR"
 }
 ```
 
 
 ## API Reference
 
-#### Get all items
+#### Get Price
 
 ```http
-  GET /api/items
+  GET 
+​/api​/v1​/price​/{brandID}​/{productID}​/{date}
+getPrice
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| Parameter    | Type      | Description                                     |
+|:-------------|:----------|:------------------------------------------------|
+| `brandID `   | `integer` | **Required**. Brand ID                          |
+| `productID ` | `integer` | **Required**. Product ID                        |
+| `date `      | `string`  | **Required**. Date in format YYYY-MM-ddTHHmmss |
 
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
+Get the price of a product in a determined date.
 

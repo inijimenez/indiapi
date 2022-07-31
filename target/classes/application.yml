@@ -19,6 +19,6 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
-
+indiapp-dateformat: "yyyy-MM-dd'T'HHmmss"
 server:
   port : 8089
