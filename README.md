@@ -1,6 +1,21 @@
 
 # IndiApp Test
 
+**Table of Contents**
+
+[TOCM]
+
+[TOC]
+
+## Description
+## 01 - Tips
+## 02 - Installation
+## 03 - Access
+## 04 - Running Tests
+## 05 - API Reference
+
+
+## Description
 In the company's e-commerce database we have the PRICES table that reflects the final price (PVP) and the rate that applies to a product of a chain between certain dates. Below is an example of the table with the relevant fields:
 
 | BRAND_ID | START_DATE          | END_DATE            | PRICE_LIST | PRODUCT_ID | PRIORITY | PRICE | CURR |
@@ -25,7 +40,7 @@ These are the fields:
 `PRICE`: final sale price.
 
 `CURR`: currency iso.
-## Exercise
+
 
 It is requested:
  
