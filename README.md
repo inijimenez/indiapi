@@ -201,8 +201,7 @@ http://localhost:8089/api/v1/price/1/35455/2020-06-16T210000
 #### Get Current Price
 
 ```http
-  GET 
-​/api​/v1​/price​/{brandID}​/{productID}​/{date}
+  GET ​/api​/v1​/price​/{brandID}​/{productID}​/{date}
 
 ```
 
@@ -217,8 +216,7 @@ Get the price of a product in a determined date.
 #### Get All Prices
 
 ```http
-  GET 
-​/api​/v1​/prices​/
+  GET ​/api​/v1​/prices​/
 
 ```
 
@@ -227,8 +225,7 @@ List all Prices
 #### Add New Price
 
 ```http
-  POST 
-​/api​/v1​/price​
+  POST ​/api​/v1​/price​
 
 ```
 
