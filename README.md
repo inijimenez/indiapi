@@ -79,6 +79,7 @@ This project uses:
 I Used:
 * IntelliJ IDEA 2022.2
 * Postman
+* Git
 
 You can access PostMan Workspace Collection to test the service:
 https://www.getpostman.com/collections/77033bb3948a37fbc553
