@@ -77,6 +77,7 @@ This project uses:
 * Java 17
 * Swagger 3.0
 * H2 Database
+* MockMvc for testing cases
 
 I Used:
 * IntelliJ IDEA 2022.2
