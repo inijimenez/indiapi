@@ -54,19 +54,22 @@ It will be valued:
 - Code Quality.
 - Correct results in the tests.
 
-## Tips
+## 01 - Tips
 This project uses:
 * SpringBoot 2.5.8
 * Java 17
 * Swagger 3.0
 * H2 Database
 
-You can access PostMan to test the service:
+I Used:
+* IntelliJ IDEA 2022.2
+* Postman
+
+You can access PostMan Workspace Collection to test the service:
 https://www.getpostman.com/collections/77033bb3948a37fbc553
 
-```bash
 
-## Installation
+## 02 - Installation
 
 Clone the repository in your project and run the following command:
 
@@ -76,7 +79,7 @@ $ git clone https://github.com/inijimenez/indiapi.git
 ```
 
     
-## Access
+## 03 - Access
 
 One you have imported this project in your preferred IDE, you can:
 
@@ -89,7 +92,7 @@ H2 DataBase: [http://localhost:8089/h2-database](http://localhost:8089/h2-databa
 **JDBC driver:** jdbc:h2:mem:indiapi
 
 **usr:** myusr / **psw:** mypsw
-## Running Tests
+## 04 - Running Tests
 
 To run tests, run the following command
 
@@ -194,8 +197,7 @@ http://localhost:8089/api/v1/price/1/35455/2020-06-16T210000
 ```
 
 
-## API Reference
-
+## 05 - API Reference
 #### Get Current Price
 
 ```http
