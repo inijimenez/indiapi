@@ -54,6 +54,17 @@ It will be valued:
 - Code Quality.
 - Correct results in the tests.
 
+## Tips
+This project uses:
+* SpringBoot 2.5.8
+* Java 17
+* Swagger 3.0
+* H2 Database
+
+You can access PostMan to test the service:
+https://www.getpostman.com/collections/77033bb3948a37fbc553
+
+```bash
 
 ## Installation
 
@@ -185,12 +196,12 @@ http://localhost:8089/api/v1/price/1/35455/2020-06-16T210000
 
 ## API Reference
 
-#### Get Price
+#### Get Current Price
 
 ```http
   GET 
 ​/api​/v1​/price​/{brandID}​/{productID}​/{date}
-getPrice
+
 ```
 
 | Parameter    | Type      | Description                                     |
@@ -201,3 +212,31 @@ getPrice
 
 Get the price of a product in a determined date.
 
+#### Get All Prices
+
+```http
+  GET 
+​/api​/v1​/prices​/
+
+```
+
+List all Prices
+
+#### Add New Price
+
+```http
+  POST 
+​/api​/v1​/price​
+
+```
+
+| Parameter    | Type              | Description              |
+|:-------------|:------------------|:-------------------------|
+| ``          | `aplication/json` | **Required**. JSON Price |
+
+Add a new price.
+
+Sample:
+```
+curl -X POST "http://localhost:8089/api/v1/price" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"brand\": { \"id\": 1, \"name\": \"ZARA\" }, \"curr\": \"EUR\", \"end_date\": \"2022-08-01T12:00:28.873Z\", \"price\": 27.5, \"price_list\": 0, \"priority\": 0, \"product_id\": 35455, \"start_date\": \"2022-08-01T19:00:28.873Z\"}"
+```

@@ -3,46 +3,42 @@ package com.ijimenez.indiapi.controller;
 import com.ijimenez.indiapi.exceptions.ResourceNotFoundException;
 import com.ijimenez.indiapi.model.Price;
 import com.ijimenez.indiapi.repository.PriceRepository;
+import com.ijimenez.indiapi.service.IPriceService;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
 public class PriceController {
 
-    @Value("${indiapp-dateformat}")
-    private String dateFormatPattern;
-
+    private final IPriceService priceService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    @Autowired
-    private PriceRepository priceRepository;
+    public PriceController(IPriceService priceService) {
+        this.priceService = priceService;
+    }
 
 
     @GetMapping(value = "price/{brandID}/{productID}/{date}")
-    public ResponseEntity<Price> getPrice(
+    public ResponseEntity<Price> getCurrentPrice(
             @Parameter(
-                    description="Brand ID",
+                    description="Brand ID (1=ZARA)",
                     example="1",
                     required=true)
             @PathVariable(value = "brandID") Long brandId,
             @Parameter(
-                    description="Product ID",
+                    description="Product ID Number (35455=T-SHIRT)",
                     example="35455",
                     required=true)
             @PathVariable(value = "productID") Long productId,
@@ -51,16 +47,22 @@ public class PriceController {
                     example="2020-06-14T100000",
                     required=true)
             @PathVariable(value = "date") String date) throws ResourceNotFoundException {
-        logger.info("Retrieving price for brandId: {}, productId: {}, date: {}", brandId, productId, date);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormatPattern);
-        LocalDateTime myDate = LocalDateTime.parse(date, formatter);
-
-        Price priceResponse = priceRepository.getPrice(brandId, productId, myDate);
-        if (priceResponse == null) {
-            throw new ResourceNotFoundException("Price not found for this:: " + brandId + " " + productId + " " + date);
-        } else {
-            return ResponseEntity.status(HttpStatus.OK).body(priceResponse);
-        }
+      return priceService.getCurrentPrice(brandId, productId, date);
     }
 
+    @GetMapping(value = "/prices")
+    public List<Price> getPrices() {
+        return priceService.findAll();
+    }
+    @PostMapping(value="/price")
+    public ResponseEntity<Price> addPrice(@RequestBody Price price)  {
+
+        Price p = priceService.addPrice(price);
+        if (p == null) {
+            return new ResponseEntity<Price>(HttpStatus.NOT_FOUND);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.CREATED).body(p);
+        }
+    }
 }

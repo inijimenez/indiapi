@@ -27,7 +27,7 @@ public class Price implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+
     private Long price_list;
 
     private Long product_id;

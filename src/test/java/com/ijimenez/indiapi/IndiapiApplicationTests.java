@@ -76,7 +76,7 @@ class IndiapiApplicationTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(expected.getPrice()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.curr").value(expected.getCurr()));
 
-        logger.info("TEST. {}", test.toString());
+        logger.info("TEST. {}", test);
     }
 
     @Test
