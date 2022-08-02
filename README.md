@@ -118,6 +118,26 @@ To run tests, run the following command
 ```bash
     mvn test
  ```
+These are the results:
+
+```bash
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ijimenez.indiapi.IndiapiApplicationTests
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.798 s
+[INFO] Finished at: 2022-08-02T10:41:25+02:00
+[INFO] ------------------------------------------------------------------------
+
+```
+And these are the tests:
 
 #### TEST 1
 

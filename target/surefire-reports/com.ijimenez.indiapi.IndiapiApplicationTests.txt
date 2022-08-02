@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ijimenez.indiapi.IndiapiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.125 s - in com.ijimenez.indiapi.IndiapiApplicationTests
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.867 s - in com.ijimenez.indiapi.IndiapiApplicationTests
